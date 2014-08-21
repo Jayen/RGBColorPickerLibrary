@@ -7,14 +7,14 @@ A Simple aRGB color picker library for android, the color picker is a dialog fra
 Usage
 --------------
 
-To add librray in Android Studio:
+To add library in Android Studio:
 
 * First import the library as a Module into project.
 * Add the modules as a dependency in build.gradle
 
 If you get the error:
 ```
-Plugin with id 'com.adroid.library' not found
+Plugin with id 'com.android.library' not found
 ```
 You need to add the build script to your build.gradle file
 ```
