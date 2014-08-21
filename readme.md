@@ -3,9 +3,7 @@ ARGB Color Picker Library For Android
 ----------------------------------------------------------------------------------
 A Simple aRGB color picker library for android, the color picker is a dialog fragment which allows a user to pick a color. 
 
-![Error loading image](https://raw.githubusercontent.com/Jayen/RGBColorPickerLibrary/master/screenshots/nexus5ColorPicker.png)
-![Error loading image](https://raw.githubusercontent.com/Jayen/RGBColorPickerLibrary/master/screenshots/nexus5ColorPickerLandscape.png)
-
+![Error loading image](https://raw.githubusercontent.com/Jayen/RGBColorPickerLibrary/master/screenshots/screenshot.png)
 Usage
 --------------
 
