@@ -1,4 +1,5 @@
 /build
+.gradle/
 *.apk
 local.properties
 .idea/*
