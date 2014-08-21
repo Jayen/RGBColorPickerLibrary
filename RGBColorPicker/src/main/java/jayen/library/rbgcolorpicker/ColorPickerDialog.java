@@ -43,7 +43,7 @@ import android.widget.TextView;
  */
 public class ColorPickerDialog extends DialogFragment implements Observer {
 
-    /* The activity that creates an instance of this dialog fragment must
+    /* The activity/fragment that creates an instance of this dialog fragment must
          * implement this interface in order to receive event callbacks.
          * Each method passes the DialogFragment in case the host needs to query it. */
     public interface ColorPickerDialogListener {
@@ -90,7 +90,7 @@ public class ColorPickerDialog extends DialogFragment implements Observer {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        // Verify that the host activity implements the callback interface
+        // Verify that the host activity/fragment implements the callback interface
         try {
             // Instantiate the ColorPickerDialogListener so we can send events to the host
             // If there is a target fragment then use that as the listener.
