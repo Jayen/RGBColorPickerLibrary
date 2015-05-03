@@ -14,7 +14,7 @@ import android.widget.TextView;
 /**
  The MIT License (MIT)
 
- Copyright (c) [2014] [Jayen kumar Jaentilal]
+ Copyright (c) [2015] [Jayen kumar Jaentilal]
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -43,6 +43,9 @@ import android.widget.TextView;
  * use the show method to display the dialog.
  */
 public class ColorPickerSupportDialogFrag extends DialogFragment implements Observer{
+
+
+    private boolean initialColor;
 
     /* The activity/fragment that creates an instance of this dialog fragment must
          * implement this interface in order to receive event callbacks.
@@ -160,6 +163,18 @@ public class ColorPickerSupportDialogFrag extends DialogFragment implements Obse
 
         Dialog dialog = builder.create();
 
+        if(initialColor) {
+            alphaPickerBar.setColor(alphaValue,redValue,greenValue,blueValue);
+            redPickerBar.setColor(alphaValue,redValue,greenValue,blueValue);
+            greenPickerBar.setColor(alphaValue,redValue,greenValue,blueValue);
+            bluePickerBar.setColor(alphaValue,redValue,greenValue,blueValue);
+
+            currentColorTV.setBackgroundColor(Color.argb(alphaValue,redValue,greenValue,blueValue));
+            currentColorTV.setText("#"+Integer.toHexString(alphaValue)+Integer.toHexString(redValue)+
+                    Integer.toHexString(greenValue)+Integer.toHexString(blueValue));
+            initialColor = false;
+        }
+
         if(savedInstanceState!=null) {
             alphaValue = savedInstanceState.getInt("alpha");
             redValue = savedInstanceState.getInt("red");
@@ -174,7 +189,16 @@ public class ColorPickerSupportDialogFrag extends DialogFragment implements Obse
             currentColorTV.setText("#"+Integer.toHexString(alphaValue)+Integer.toHexString(redValue)+
                     Integer.toHexString(greenValue)+Integer.toHexString(blueValue));
         }
+
         return dialog;
+    }
+
+    public void setInitialColor(int alphaValue, int redValue, int greenValue, int blueValue) {
+        initialColor = true;
+        this.alphaValue = alphaValue;
+        this.redValue = redValue;
+        this.greenValue = greenValue;
+        this.blueValue = blueValue;
     }
 
     @Override

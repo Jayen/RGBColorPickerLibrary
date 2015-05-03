@@ -78,24 +78,24 @@ public class GreenPickerBar extends BasePickerBar implements Subject, Observer {
         super.onSizeChanged(w, h, oldw, oldh);
         yPointerPos = (top + bottom) / 2;
         /*
-         * If there was a orientation change, we may
-         * already have color values therefore we need to
+         * We may already have color values therefore we need to
          * set the pointer and the shader to those colors.
          */
-        if(!orientationChange) {
+        if(noColorSet) {
             xPointerPos = barWidth / 2;
             updateColor(xPointerPos);
             shader = new LinearGradient(0f,0f,right,0f,
                     Color.argb(alphaValue,redValue,0,blueValue),
                     Color.argb(alphaValue,redValue,255,blueValue), Shader.TileMode.CLAMP);
+            noColorSet = false;
         }
         else {
             xPointerPos = Math.round((greenValue/255f) * barWidth + left);
             shader = new LinearGradient(left, 0f, right, 0f,
                     Color.argb(alphaValue, redValue, 0, blueValue),
                     Color.argb(alphaValue, redValue, 255, blueValue), Shader.TileMode.CLAMP);
-            invalidate();
         }
+        invalidate();
     }
 
     public void updateColor(float xPointerPos) {
@@ -110,7 +110,7 @@ public class GreenPickerBar extends BasePickerBar implements Subject, Observer {
 
     @Override
     public void setColor(int alphaValue, int redValue, int greenValue, int blueValue) {
-        orientationChange = true;
+        noColorSet = false;
         super.setColor(alphaValue, redValue, greenValue, blueValue);
     }
 }

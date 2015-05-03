@@ -46,7 +46,7 @@ public abstract class BasePickerBar extends View {
     int blueValue;
 
     boolean isPointerMoving = false;
-    boolean orientationChange = false;
+    boolean noColorSet = true;
 
     public void init() {
         barPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

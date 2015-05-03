@@ -16,12 +16,17 @@ import jayen.library.rbgcolorpicker.ColorPickerDialog;
 public class Demo extends Activity implements ColorPickerDialog.ColorPickerDialogListener {
 
     private ImageView iv;
+    private int alphaValue = 255;
+    private int redValue = 0;
+    private int greenValue = 0;
+    private int blueValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_activity);
         iv = (ImageView) findViewById(R.id.colourIV);
+        iv.setBackgroundColor(Color.argb(alphaValue,redValue,greenValue,blueValue));
     }
 
 
@@ -46,7 +51,8 @@ public class Demo extends Activity implements ColorPickerDialog.ColorPickerDialo
 
     public void onPickClicked(View view) {
         ColorPickerDialog colorPickerDialog =  new ColorPickerDialog();
-        colorPickerDialog.show(getFragmentManager(),"tag");
+        colorPickerDialog.setInitialColor(alphaValue, redValue, greenValue, blueValue);
+        colorPickerDialog.show(getFragmentManager(), "tag");
     }
 
     // The colour picker dialog fragment receives a reference to this Activity through the
@@ -54,6 +60,10 @@ public class Demo extends Activity implements ColorPickerDialog.ColorPickerDialo
     // defined by the ColorPickerDialog.ColourPickerDialogListener interface
     @Override
     public void onColorConfirmed(DialogFragment dialog,int alpha, int red, int green, int blue) {
+        alphaValue = alpha;
+        redValue = red;
+        greenValue = green;
+        blueValue = blue;
         Toast.makeText(getApplicationContext(),"User confirmed colour"+Color.argb(alpha,red,green,blue),Toast.LENGTH_LONG).show();
         iv.setBackgroundColor(Color.argb(alpha,red,green,blue));
     }
